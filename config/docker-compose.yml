@@ -1,0 +1,18 @@
+# docker-compose up
+# this gets mysql from docker and creates a local instance with data in:
+# - /home/your_user/containers/mysql/data
+# this directory should exist before running docker-compose
+version: "2.7"
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    volumes:
+      - /home/your_user/containers/mysql/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: 'your_database'
+      MYSQL_USER: 'your_user'
+      MYSQL_PASSWORD: 'your_password'
+      MYSQL_ROOT_PASSWORD: 'root_password'
